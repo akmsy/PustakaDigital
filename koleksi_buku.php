@@ -105,11 +105,30 @@
                     <td></td>
                     <td>
                         <a href="edit_koleksi.php"><button type="button" class="btn btn-success">Edit</button></a>
-                        <button type="button" class="btn btn-warning">Hapus</button>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#hapusKoleksiBuku">Hapus</button>
                     </td>
                 </tr>
             </tbody>
         </table>
+
+        <!-- Modal Hapus Koleksi -->
+        <div class="modal fade" id="hapusKoleksiBuku" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Konfirmasi Hapus</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah Anda yalin ingin menghapus Koleksi Buku?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                    <button type="button" class="btn btn-danger">Hapus</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
