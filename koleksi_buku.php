@@ -29,7 +29,7 @@
         </nav>
     </header>
 
-    <main class="ms-5 me-5">
+    <main class="ms-5 me-5"style="background-color: #d9e2f9;">
         <h1 class="text-center mt-4 mb-4">Koleksi Buku</h1>
         <div class="d-flex justify-content-end mb-2" data-bs-target="#modalTambahKoleksi">
             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tambahKoleksiBuku"><i class="bi bi-plus-lg"></i> Tambah Koleksi</button>
@@ -45,36 +45,38 @@
                     </div>
 
                     <div class="modal-body">
-                        <div class="mb-3 d-flex">
-                            <div class="me-3">
-                                <label class="form-label">Kode Buku</label>
+                        <form action="proses_tambah_koleksi.php">
+                            <div class="mb-3 d-flex">
+                                <div class="me-3">
+                                    <label class="form-label">Kode Buku</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="ms-2">
+                                    <label class="form-label">Stok Buku</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Judul Buku</label>
                                 <input type="text" class="form-control">
                             </div>
-                            <div class="ms-2">
-                                <label class="form-label">Stok Buku</label>
+                            <div class="mb-3">
+                                <label class="form-label">Pengarang</label>
                                 <input type="text" class="form-control">
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label">Kategori</label>
+                                <select name="kategori" id="" class="form-select">
+                                    <option value=""></option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Judul Buku</label>
-                            <input type="text" class="form-control">
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                            <button type="button" class="btn btn-primary">Tambah</button>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Pengarang</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Kategori</label>
-                            <select name="kategori" id="" class="form-select">
-                                <option value=""></option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                        <button type="button" class="btn btn-primary">Tambah</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -102,7 +104,7 @@
                     <td></td>
                     <td></td>
                     <td>
-                        <button type="button" class="btn btn-success">Edit</button>
+                        <a href="edit_koleksi.php"><button type="button" class="btn btn-success">Edit</button></a>
                         <button type="button" class="btn btn-warning">Hapus</button>
                     </td>
                 </tr>
