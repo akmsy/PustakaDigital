@@ -1,5 +1,5 @@
 <?php 
-    include 'koneksi.php'
+    include 'koneksi.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="proses_tambah_koleksi.php">
+                        <form action="proses_tambah_koleksi.php" method="POST">
                             <div class="mb-3 d-flex">
                                 <div class="me-3">
                                     <label class="form-label">Kode Buku</label>
@@ -69,7 +69,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Kategori</label>
-                                <select name="kategori" id="" class="form-select" name="kategori">
+                                <select name="kategori" id="" class="form-select">
                                     <option value="">Pilih Kategori Buku</option>
                                     <option value="Fiksi">Fiksi</option>
                                     <option value="Fiksi">Sejarah</option>
@@ -115,33 +115,62 @@
                     <td><?= $data['stok'];?></td>
                     <td><?= $data['status'];?></td>
                     <td>
-                        <a href="edit_koleksi.php"><button type="button" class="btn btn-success">Edit</button></a>
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#hapusKoleksiBuku">Hapus</button>
+                        <a href="edit_koleksi.php?id_buku=<?= $data['id_buku']; ?>"><button type="button" class="btn btn-success">Edit</button></a>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#hapus<?= $data['id_buku']; ?>">Hapus</button>
                     </td>
                 </tr>
+                <!-- Modal Hapus Koleksi -->
+                <div class="modal fade" id="hapus<?= $data['id_buku']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Konfirmasi Hapus</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Apakah Anda yakin ingin menghapus Koleksi Buku <b><?= $data['judul']; ?></b>?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                            <a href="hapus_koleksi_buku.php?id_buku=<?= $data['id_buku']; ?>" class="btn btn-danger" data-bs-target="#hapusKoleksiBukuSuccess">Hapus</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
                 <?php } ?>
             </tbody>
         </table>
 
+
         <!-- Modal Hapus Koleksi -->
-        <div class="modal fade" id="hapusKoleksiBuku" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="hapusKoleksiBukuSuccess" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Konfirmasi Hapus</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Hapus Berhasil</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Apakah Anda yalin ingin menghapus Koleksi Buku?
+                    Buku berhasil dihapus!
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                    <button type="button" class="btn btn-danger">Hapus</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">OK</button></a>
                 </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <?php if (isset($_GET['hapus'])) { ?>
+        <script>
+            window.onload = function(){
+                var myModal = new bootstrap.Modal(
+                    document.getElementById('hapusKoleksiBukuSuccess')
+                );
+                myModal.show();
+            }
+        </script>
+        <?php } ?>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 </html>
