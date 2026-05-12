@@ -13,7 +13,7 @@
             <form action="proses_login.php" method="POST" class="shadow p-5 bg-body-tertiary rounded w-50">
                 <div class="text-center mb-4">
                     <h1>Pustaka Digital</h1>
-                    <span>Sistem Perpustakaan Nasional</span>
+                    <span class="fw-bold">Sistem Perpustakaan Nasional</span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Username</label>
