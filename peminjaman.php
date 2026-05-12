@@ -48,7 +48,7 @@
                     <th>Aksi</th>
                 </tr>
             </thead>
-            <tbody class="table-secondary">
+            <tbody class="table-light">
                 <tr>
                     <td></td>
                     <td></td>
