@@ -52,32 +52,36 @@
                             <div class="mb-3 d-flex">
                                 <div class="me-3">
                                     <label class="form-label">Kode Buku</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="kode_buku">
                                 </div>
                                 <div class="ms-2">
                                     <label class="form-label">Stok Buku</label>
-                                    <input type="text" class="form-control">
+                                    <input type="number" class="form-control" name="stok_buku">
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Judul Buku</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="judul">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Pengarang</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="pengarang">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Kategori</label>
-                                <select name="kategori" id="" class="form-select">
-                                    <option value=""></option>
+                                <select name="kategori" id="" class="form-select" name="kategori">
+                                    <option value="">Pilih Kategori Buku</option>
+                                    <option value="Fiksi">Fiksi</option>
+                                    <option value="Fiksi">Sejarah</option>
+                                    <option value="Fiksi">Teknologi</option>
+                                    <option value="Fiksi">Sains</option>
                                 </select>
                             </div>
                         </div>
                         
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                            <button type="button" class="btn btn-primary">Tambah</button>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
                 </div>
