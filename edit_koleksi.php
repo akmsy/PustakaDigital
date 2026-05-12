@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title>Pustaka Digital</title>
 </head>
-<body>
+<body style="background-color: #d9e2f9;">
 <!-- Navbar -->
     <header>
         <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
@@ -18,8 +18,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link" href="koleksi_buku.php">Koleksi Buku</a>
-                        <a class="nav-link active" aria-current="page" href="peminjaman.php">Peminjaman</a>
+                        <a class="nav-link active" aria-current="page" href="koleksi_buku.php">Koleksi Buku</a>
+                        <a class="nav-link" href="peminjaman.php">Peminjaman</a>
                     </div>
                 </div>
                 <div class="justify-content-md-end">
@@ -29,7 +29,7 @@
         </nav>
     </header>
 
-    <main style="background-color: #d9e2f9;">
+    <main>
         <div class="container-fluid vh-100 d-flex justify-content-center align-items-center" style="width: 800px;">
             <form action="proses_edit_koleksi.php" class="shadow p-4 bg-body-tertiary rounded">
                 <h1 class="text-center">Form Edit Buku</h1>
@@ -63,7 +63,7 @@
                 </div>
             
                 <div class="d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-secondary me-2">Kembali</button>
+                    <a href="koleksi_buku.php"><button type="button" class="btn btn-secondary me-2">Kembali</button></a>
                     <button type="button" class="btn btn-primary">Simpan</button>
                 </div>
             </form>

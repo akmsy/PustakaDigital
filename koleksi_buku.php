@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title>Pustaka Digital</title>
 </head>
-<body>
+<body style="background-color: #d9e2f9;">
     <!-- Navbar -->
     <header>
         <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
@@ -29,7 +29,7 @@
         </nav>
     </header>
 
-    <main class="ms-5 me-5"style="background-color: #d9e2f9;">
+    <main class="ms-5 me-5">
         <h1 class="text-center mt-4 mb-4">Koleksi Buku</h1>
         <div class="d-flex justify-content-end mb-2" data-bs-target="#modalTambahKoleksi">
             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tambahKoleksiBuku"><i class="bi bi-plus-lg"></i> Tambah Koleksi</button>
