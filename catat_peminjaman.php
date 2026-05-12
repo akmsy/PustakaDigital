@@ -31,7 +31,7 @@
 
     <main>
         <div class="container-fluid vh-100 d-flex justify-content-center align-items-center" style="width: 800px;">
-            <form action="proses_edit_koleksi.php" class="shadow p-4 bg-body-tertiary rounded">
+            <form action="proses_catat_peminjaman.php" class="shadow p-4 bg-body-tertiary rounded">
                 <h1 class="text-center">Form Data Peminjaman</h1>
                 <div class="mb-3">
                     <label class="form-label">Kode Peminjaman</label>
