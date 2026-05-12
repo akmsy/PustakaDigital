@@ -18,8 +18,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="#">Koleksi Buku</a>
-                        <a class="nav-link" href="#">Peminjaman</a>
+                        <a class="nav-link" href="koleksi_buku.php">Koleksi Buku</a>
+                        <a class="nav-link active" aria-current="page" href="peminjaman.php">Peminjaman</a>
                     </div>
                 </div>
                 <div class="justify-content-md-end">
