@@ -1,3 +1,6 @@
+<?php 
+    include 'koneksi.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,19 +98,24 @@
                 </tr>
             </thead>
             <tbody class="table-light">
+                <?php 
+                    $query = mysqli_query($koneksi, "SELECT * FROM koleksi_buku");
+                    while ($data = mysqli_fetch_array($query)){ 
+                    ?>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?= $data['id_buku'];?></td>
+                    <td><?= $data['kode_buku'];?></td>
+                    <td><?= $data['judul'];?></td>
+                    <td><?= $data['pengarang'];?></td>
+                    <td><?= $data['kategori'];?></td>
+                    <td><?= $data['stok'];?></td>
+                    <td><?= $data['status'];?></td>
                     <td>
                         <a href="edit_koleksi.php"><button type="button" class="btn btn-success">Edit</button></a>
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#hapusKoleksiBuku">Hapus</button>
                     </td>
                 </tr>
+                <?php } ?>
             </tbody>
         </table>
 
