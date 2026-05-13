@@ -16,23 +16,29 @@ Website Pustaka Digital merupakan project latihan responsi Praktikum Pemrograman
 - Menipis => stok ≤ 5
 - Tersedia => stok > 5
 
-``` CREATE TRIGGER `status_buku_insert` BEFORE INSERT ON `koleksi_buku`
+## SQL TRIGGER INSERT
+```
+CREATE TRIGGER `status_buku_insert` BEFORE INSERT ON `koleksi_buku`
  FOR EACH ROW IF NEW.stok = 0 THEN
     SET NEW.status = 'Habis';
 ELSEIF NEW.stok <= 5 THEN
     SET NEW.status = 'Menipis';
 ELSE
     SET NEW.status = 'Tersedia';
-END IF ```
+END IF 
+```
 
-``` CREATE TRIGGER `status_buku_update` BEFORE UPDATE ON `koleksi_buku`
+## SQL TRIGGER UPDATE
+```
+CREATE TRIGGER `status_buku_update` BEFORE UPDATE ON `koleksi_buku`
  FOR EACH ROW IF NEW.stok = 0 THEN
     SET NEW.status = 'Habis';
 ELSEIF NEW.stok <= 5 THEN
     SET NEW.status = 'Menipis';
 ELSE
     SET NEW.status = 'Tersedia';
-END IF ```
+END IF 
+```
 
 ## Tools
 - HTML
