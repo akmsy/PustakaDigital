@@ -1,3 +1,6 @@
+<?php 
+    include 'koneksi.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,23 +52,62 @@
                 </tr>
             </thead>
             <tbody class="table-light">
+                <?php 
+                    $query = mysqli_query($koneksi, "SELECT * FROM peminjaman");
+                    $no = 1;
+                    while ($data = mysqli_fetch_array($query)){ 
+                ?>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <!-- <td> <?= $data['id_peminjaman']; ?></td> -->
+                    <td><?= $no++; ?></td>
+                    <td><?= $data['kode_peminjaman']; ?></td>
+                    <td><?= $data['peminjam']; ?></td>
+                    <td><?= $data['judul']; ?></td>
+                    <td><?= $data['tanggal_pinjam']; ?></td>
+                    <td><?= $data['tanggal_kembali']; ?></td>
+                    <td><?= $data['status']; ?></td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aksiDikembalikan">Kembalikan</button>
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#aksiSelesai">Selesai</button>
+                        <?php if ($data['status'] == 'Dipinjam' || $data['status'] == 'Terlambat') { ?>
+                            <a href="kembalikan.php?id_peminjaman=<?= $data['id_peminjaman']; ?>" class="btn btn-info btn-sm">Kembalikan</a>
+                        <?php } elseif ($data['status'] == 'Dikembalikan') { ?>
+                            <button class="btn btn-success btn-sm" disabled>Selesai</button>
+                        <?php } ?>
                     </td>
                 </tr>
+                <?php } ?>
             </tbody>
         </table>
 
+        <!-- Modal Catat Peminjaman Success -->
+        <div class="modal fade" id="catatPeminjamanSuccess" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Catat Peminjaman Berhasil</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Peminjaman berhasil dicatat!
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">OK</button></a>
+                </div>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <?php if (isset($_GET['peminjaman'])) { ?>
+        <script>
+            window.onload = function(){
+                var myModal = new bootstrap.Modal(
+                    document.getElementById('catatPeminjamanSuccess')
+                );
+                myModal.show();
+            }
+        </script>
+    <?php } ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 </html>
