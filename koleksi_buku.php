@@ -105,7 +105,7 @@
                 <?php 
                     $query = mysqli_query($koneksi, "SELECT * FROM koleksi_buku");
                     while ($data = mysqli_fetch_array($query)){ 
-                    ?>
+                ?>
                 <tr>
                     <td><?= $data['id_buku'];?></td>
                     <td><?= $data['kode_buku'];?></td>
