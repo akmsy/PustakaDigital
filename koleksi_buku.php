@@ -119,7 +119,7 @@
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#hapus<?= $data['id_buku']; ?>">Hapus</button>
                     </td>
                 </tr>
-                <!-- Modal Hapus Koleksi -->
+                <!-- Konfirmasi Modal Hapus Koleksi -->
                 <div class="modal fade" id="hapus<?= $data['id_buku']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -142,7 +142,7 @@
         </table>
 
 
-        <!-- Modal Hapus Koleksi -->
+        <!-- Modal Hapus Koleksi Success -->
         <div class="modal fade" id="hapusKoleksiBukuSuccess" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -152,6 +152,24 @@
                 </div>
                 <div class="modal-body">
                     Buku berhasil dihapus!
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">OK</button></a>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Edit Koleksi Success -->
+        <div class="modal fade" id="editKoleksiBukuSuccess" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Berhasil</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Buku berhasil diedit!
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">OK</button></a>
@@ -170,7 +188,18 @@
                 myModal.show();
             }
         </script>
-        <?php } ?>
+    <?php } ?>
+
+    <?php if (isset($_GET['edit'])) { ?>
+        <script>
+            window.onload = function(){
+                var myModal = new bootstrap.Modal(
+                    document.getElementById('editKoleksiBukuSuccess')
+                );
+                myModal.show();
+            }
+        </script>
+    <?php } ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 </body>
 </html>
