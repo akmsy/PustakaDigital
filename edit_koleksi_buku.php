@@ -1,3 +1,10 @@
+<?php 
+    include 'koneksi.php';
+    $idBuku = $_GET['id_buku'];
+    // var_dump($idBuku);
+    $query = mysqli_query($koneksi, "SELECT * FROM koleksi_buku WHERE id_buku=$idBuku");
+    $data = mysqli_fetch_array($query);
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,40 +38,44 @@
 
     <main>
         <div class="container-fluid vh-100 d-flex justify-content-center align-items-center" style="width: 800px;">
-            <form action="proses_edit_koleksi.php" class="shadow p-4 bg-body-tertiary rounded">
+            <form action="proses_edit_koleksi_buku.php" method="POST" class="shadow p-4 bg-body-tertiary rounded">
                 <h1 class="text-center">Form Edit Buku</h1>
                 <div class="mb-3">
                     <label class="form-label">ID Buku</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" readonly value="<?= $data['id_buku']; ?>" name="id_buku">
                 </div>
                 <div class="mb-3 d-flex">
                     <div class="me-3">
                         <label class="form-label">Kode Buku</label>
-                        <input type="text" class="form-control" style="width: 365px;">
+                        <input type="text" class="form-control" style="width: 365px;" value="<?= $data['kode_buku']; ?>" name="kode_buku">
                     </div>
                     <div class="ms-2">
                         <label class="form-label">Jumlah Stok</label>
-                        <input type="text" class="form-control" style="width: 365px;">
+                        <input type="number" class="form-control" style="width: 365px;" value="<?= $data['stok']; ?>" name="stok_buku">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Judul Buku</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" value="<?= $data['judul'];?>" name="judul">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Pengarang</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" value="<?= $data['pengarang']; ?>" name="pengarang">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Kategori</label>
                     <select name="kategori" id="" class="form-select">
-                        <option value=""></option>
+                        <option value="<?= $data['kategori']; ?>"><?= $data['kategori']; ?></option>
+                        <option value="Fiksi">Fiksi</option>
+                        <option value="Sejarah">Sejarah</option>
+                        <option value="Teknologi">Teknologi</option>
+                        <option value="Sains">Sains</option>
                     </select>
                 </div>
             
                 <div class="d-flex justify-content-center align-items-center">
-                    <a href="koleksi_buku.php"><button type="button" class="btn btn-secondary me-2">Kembali</button></a>
-                    <button type="button" class="btn btn-primary">Simpan</button>
+                    <a href="koleksi_buku.php" class="btn btn-secondary me-2">Kembali</a>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>

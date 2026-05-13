@@ -72,9 +72,9 @@
                                 <select name="kategori" id="" class="form-select">
                                     <option value="">Pilih Kategori Buku</option>
                                     <option value="Fiksi">Fiksi</option>
-                                    <option value="Fiksi">Sejarah</option>
-                                    <option value="Fiksi">Teknologi</option>
-                                    <option value="Fiksi">Sains</option>
+                                    <option value="Sejarah">Sejarah</option>
+                                    <option value="Teknologi">Teknologi</option>
+                                    <option value="Sains">Sains</option>
                                 </select>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                     <td><?= $data['stok'];?></td>
                     <td><?= $data['status'];?></td>
                     <td>
-                        <a href="edit_koleksi.php?id_buku=<?= $data['id_buku']; ?>"><button type="button" class="btn btn-success">Edit</button></a>
+                        <a href="edit_koleksi_buku.php?id_buku=<?= $data['id_buku']; ?>" class="btn btn-success">Edit</a>
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#hapus<?= $data['id_buku']; ?>">Hapus</button>
                     </td>
                 </tr>
