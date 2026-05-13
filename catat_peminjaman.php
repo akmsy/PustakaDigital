@@ -1,3 +1,8 @@
+<?php 
+    include 'koneksi.php'; 
+
+    $query = mysqli_query($koneksi, "SELECT judul, stok FROM koleksi_buku");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,37 +36,42 @@
 
     <main>
         <div class="container-fluid vh-100 d-flex justify-content-center align-items-center" style="width: 800px;">
-            <form action="proses_catat_peminjaman.php" class="shadow p-4 bg-body-tertiary rounded">
+            <form action="proses_catat_peminjaman.php" method="GET" class="shadow p-4 bg-body-tertiary rounded">
                 <h1 class="text-center">Form Data Peminjaman</h1>
                 <div class="mb-3">
                     <label class="form-label">Kode Peminjaman</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="kode_peminjaman">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nama Peminjam</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="nama_peminjam">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Pilih Buku</label>
-                    <select name="kategori" id="" class="form-select">
+                    <select name="judul_buku" class="form-select">
                         <option value="">Pilih Buku Tersedia</option>
-                        <option value=""></option>
+                        
+                        <?php 
+                            while ($data = mysqli_fetch_array($query)){ 
+                        ?>
+                        <option value="<?= $data['judul']; ?>"><?= $data['judul']; ?> - Stok: <?= $data['stok']; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="mb-3 d-flex">
                     <div class="me-3">
                         <label class="form-label">Tanggal Pinjam</label>
-                        <input type="date" class="form-control" style="width: 365px;">
+                        <input type="date" class="form-control" name="tgl_pinjam" style="width: 365px;">
                     </div>
                     <div class="ms-2">
                         <label class="form-label">Tanggal Kembali</label>
-                        <input type="date" class="form-control" style="width: 365px;">
+                        <input type="date" class="form-control" name="tgl_kembali" style="width: 365px;">
                     </div>
                 </div>
             
                 <div class="d-flex justify-content-center align-items-center">
                     <a href="koleksi_buku.php"><button type="button" class="btn btn-secondary me-2">Kembali</button></a>
-                    <button type="button" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>
