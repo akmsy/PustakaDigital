@@ -26,7 +26,25 @@
                     </div>
                 </div>
                 <div class="justify-content-md-end">
-                    <button type="button" class="btn btn-light"><i class="bi bi-box-arrow-right"></i> Keluar</button>
+                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="bi bi-box-arrow-right"></i> Keluar</button>
+                    <!-- Modal Logout -->
+                    <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Konfirmasi Logout</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Apakah Anda yakin ingin logout?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                    <a href="logout.php" class="btn btn-danger">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
