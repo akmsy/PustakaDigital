@@ -53,9 +53,6 @@ WHERE id_buku = NEW.id_buku
 CREATE TRIGGER `kembalikan_stok_buku` BEFORE UPDATE ON `peminjaman`
 FOR EACH ROW BEGIN
     IF NEW.status = 'Dikembalikan' THEN
-        IF CURDATE() > NEW.tanggal_kembali THEN
-            SET NEW.status = 'Terlambat';
-        END IF;
         UPDATE koleksi_buku
         SET stok = stok + 1
         WHERE id_buku = NEW.id_buku;
