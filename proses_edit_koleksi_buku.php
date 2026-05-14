@@ -15,7 +15,7 @@
 
     if($result){
         echo "Koleksi buku berhasil diedit!";
-        header('location: koleksi_buku.php?edit=sukses');
+        header('Location: koleksi_buku.php?edit=sukses');
         exit();
     }
     else{

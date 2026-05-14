@@ -12,7 +12,7 @@
 
     if($result){
         echo "Peminjaman Buku berhasil dicatat!";
-        header('location: peminjaman.php?peminjaman=sukses');
+        header('Location: peminjaman.php?peminjaman=sukses');
         exit();
     }
     else{

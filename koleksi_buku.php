@@ -150,7 +150,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                                <a href="hapus_koleksi_buku.php?id_buku=<?= $data['id_buku']; ?>" class="btn btn-danger" data-bs-target="#hapusKoleksiBukuSuccess">Hapus</a>
+                                <a href="proses_hapus_koleksi_buku.php?id_buku=<?= $data['id_buku']; ?>" class="btn btn-danger" data-bs-target="#hapusKoleksiBukuSuccess">Hapus</a>
                             </div>
                         </div>
                     </div>
@@ -159,6 +159,23 @@
             </tbody>
         </table>
 
+        <!-- Modal Tambah Koleksi Success -->
+        <div class="modal fade" id="tambahKoleksiBukuSuccess" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Berhasil</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Buku berhasil ditambah!
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">OK</button></a>
+                </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Modal Hapus Koleksi Success -->
         <div class="modal fade" id="hapusKoleksiBukuSuccess" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -196,6 +213,17 @@
             </div>
         </div>
     </main>
+
+    <?php if (isset($_GET['tambah'])) { ?>
+        <script>
+            window.onload = function(){
+                var myModal = new bootstrap.Modal(
+                    document.getElementById('tambahKoleksiBukuSuccess')
+                );
+                myModal.show();
+            }
+        </script>
+    <?php } ?>
 
     <?php if (isset($_GET['hapus'])) { ?>
         <script>

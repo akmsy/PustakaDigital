@@ -9,7 +9,7 @@
 
     if($result){
         echo "Koleksi buku berhasil ditambahkan!";
-        header('location: koleksi_buku.php?hapus=sukses');
+        header('Location: koleksi_buku.php?hapus=sukses');
         exit();
     }
     else{

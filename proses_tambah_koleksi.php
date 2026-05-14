@@ -12,7 +12,7 @@
 
     if($result){
         echo "Koleksi buku berhasil ditambahkan!";
-        header('location: index.php');
+        header('Location: koleksi_buku.php?tambah=sukses');
         exit();
     }
     else{
