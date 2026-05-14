@@ -1,4 +1,8 @@
 <?php 
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
     include 'koneksi.php';
     
     if (!isset($_SESSION['logged_in'])){
@@ -54,6 +58,15 @@
             </div>
         </nav>
     </header>
+
+    <?php if(isset($_SESSION['login_success'])) { ?>
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <?= $_SESSION['login_success']; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <?php unset($_SESSION['login_success']); ?>
+    <?php } ?>
 
     <main class="ms-5 me-5">
         <h1 class="text-center mt-4 mb-4">Koleksi Buku</h1>
@@ -251,6 +264,6 @@
             }
         </script>
     <?php } ?>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 </body>
 </html>

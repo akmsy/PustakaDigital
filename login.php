@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    include 'koneksi.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +18,23 @@
                 <div class="text-center mb-4">
                     <h1>Pustaka Digital</h1>
                     <span class="fw-bold">Sistem Perpustakaan Nasional</span>
+                </div>
+                <div class="mb-4">
+                    <?php if(isset($_SESSION['login_error'])) { ?>
+                        <div class="alert alert-danger">
+                            <?= $_SESSION['login_error']; ?>
+                        </div>
+                    <?php 
+                        unset($_SESSION['login_error']);
+                    } ?>
+
+                    <?php if(isset($_SESSION['login_null'])) { ?>
+                        <div class="alert alert-danger">
+                            <?= $_SESSION['login_null']; ?>
+                        </div>
+                    <?php 
+                        unset($_SESSION['login_null']);
+                    } ?>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Username</label>
