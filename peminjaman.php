@@ -74,12 +74,31 @@
                     <td><?= $data['status_peminjaman']; ?></td>
                     <td>
                         <?php if (in_array($data['status_peminjaman'], ['Dipinjam', 'Terlambat'])) { ?>
-                            <a href="kembalikan.php?id_peminjaman=<?= $data['id_peminjaman']; ?>" class="btn btn-info btn-sm">Kembalikan</a>
+                            <!-- <a href="kembalikan.php?id_peminjaman=<?= $data['id_peminjaman']; ?>" class="btn btn-info btn-sm">Kembalikan</a> -->
+                            <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#kembalikan<?= $data['id_peminjaman'];?>">Kembalikan</button>
                         <?php } elseif ($data['status_peminjaman'] == 'Dikembalikan') { ?>
                             <button class="btn btn-success btn-sm" disabled>Selesai</button>
                         <?php } ?>
                     </td>
                 </tr>
+                <!-- Konfirmasi Kembalikan Peminjaman Buku -->
+                <div class="modal fade" id="kembalikan<?= $data['id_peminjaman']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Konfirmasi Pengembalian</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Yakin ingin memproses pengembalian buku <b><?= $data['judul']; ?></b> (<?= $data['kode_peminjaman']; ?>)?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                <a href="kembalikan.php?id_peminjaman=<?= $data['id_peminjaman']; ?>" class="btn btn-danger">Kembalikan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <?php } ?>
             </tbody>
         </table>
@@ -101,6 +120,24 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal Kembalikan Peminjaman Success -->
+        <div class="modal fade" id="KembalikanPeminjamanSuccess" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Pengembalian Berhasil</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Buku berhasil dikembalikan!
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">OK</button></a>
+                </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <?php if (isset($_GET['peminjaman'])) { ?>
@@ -108,6 +145,17 @@
             window.onload = function(){
                 var myModal = new bootstrap.Modal(
                     document.getElementById('catatPeminjamanSuccess')
+                );
+                myModal.show();
+            }
+        </script>
+    <?php } ?>
+
+    <?php if (isset($_GET['kembali'])) { ?>
+        <script>
+            window.onload = function(){
+                var myModal = new bootstrap.Modal(
+                    document.getElementById('KembalikanPeminjamanSuccess')
                 );
                 myModal.show();
             }
