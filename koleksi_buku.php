@@ -123,18 +123,18 @@
                 <div class="modal fade" id="hapus<?= $data['id_buku']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Konfirmasi Hapus</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Konfirmasi Hapus</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Apakah Anda yakin ingin menghapus Koleksi Buku <b><?= $data['judul']; ?></b>?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                <a href="hapus_koleksi_buku.php?id_buku=<?= $data['id_buku']; ?>" class="btn btn-danger" data-bs-target="#hapusKoleksiBukuSuccess">Hapus</a>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            Apakah Anda yakin ingin menghapus Koleksi Buku <b><?= $data['judul']; ?></b>?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                            <a href="hapus_koleksi_buku.php?id_buku=<?= $data['id_buku']; ?>" class="btn btn-danger" data-bs-target="#hapusKoleksiBukuSuccess">Hapus</a>
-                        </div>
-                    </div>
                     </div>
                 </div>
                 <?php } ?>
