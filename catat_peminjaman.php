@@ -62,6 +62,17 @@
         <div class="container-fluid vh-100 d-flex justify-content-center align-items-center" style="width: 800px;">
             <form action="proses_catat_peminjaman.php" method="POST" class="shadow p-4 bg-body-tertiary rounded">
                 <h1 class="text-center">Form Data Peminjaman</h1>
+                <?php if (isset($_GET['error']) && $_GET['error'] == 'stok_habis') { ?>
+                    <div class="alert alert-danger">
+                        Stok buku habis, tidak bisa dipinjam!
+                    </div>
+                <?php } ?>
+        
+                <?php if (isset($_GET['success'])) { ?>
+                    <div class="alert alert-success">
+                        Peminjaman berhasil dicatat!
+                    </div>
+                <?php } ?>
                 <div class="mb-3">
                     <label class="form-label">Kode Peminjaman</label>
                     <input type="text" class="form-control" name="kode_peminjaman">
