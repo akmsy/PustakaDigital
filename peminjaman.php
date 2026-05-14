@@ -35,7 +35,7 @@
     <main class="ms-5 me-5">
         <h1 class="text-center mt-4 mb-4">Database Peminjaman</h1>
         <div class="d-flex justify-content-end mb-2" data-bs-target="#modalTambahKoleksi">
-            <a href="catat_peminjaman.php"><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tambahKoleksiBuku"><i class="bi bi-file-earmark-plus"></i> Catat Peminjaman</button></a>
+            <a href="catat_peminjaman.php" type="button" class="btn btn-secondary"><i class="bi bi-file-earmark-plus"></i> Catat Peminjaman</a>
         </div>
         
         <table class="table shadow p-3 mb-5 bg-body-tertiary rounded">
@@ -53,7 +53,13 @@
             </thead>
             <tbody class="table-light">
                 <?php 
-                    $query = mysqli_query($koneksi, "SELECT * FROM peminjaman");
+                    $query = mysqli_query($koneksi, "SELECT p.*, kb.judul AS judul, 
+                                        CASE
+                                        WHEN p.status = 'Dikembalikan' THEN 'Dikembalikan'
+                                        WHEN CURDATE() > p.tanggal_kembali THEN 'Terlambat'
+                                        ELSE 'Dipinjam'
+                                        END AS status_peminjaman 
+                                        FROM peminjaman p JOIN koleksi_buku kb ON p.id_buku = kb.id_buku");
                     $no = 1;
                     while ($data = mysqli_fetch_array($query)){ 
                 ?>
@@ -65,11 +71,11 @@
                     <td><?= $data['judul']; ?></td>
                     <td><?= $data['tanggal_pinjam']; ?></td>
                     <td><?= $data['tanggal_kembali']; ?></td>
-                    <td><?= $data['status']; ?></td>
+                    <td><?= $data['status_peminjaman']; ?></td>
                     <td>
-                        <?php if ($data['status'] == 'Dipinjam' || $data['status'] == 'Terlambat') { ?>
+                        <?php if (in_array($data['status_peminjaman'], ['Dipinjam', 'Terlambat'])) { ?>
                             <a href="kembalikan.php?id_peminjaman=<?= $data['id_peminjaman']; ?>" class="btn btn-info btn-sm">Kembalikan</a>
-                        <?php } elseif ($data['status'] == 'Dikembalikan') { ?>
+                        <?php } elseif ($data['status_peminjaman'] == 'Dikembalikan') { ?>
                             <button class="btn btn-success btn-sm" disabled>Selesai</button>
                         <?php } ?>
                     </td>
