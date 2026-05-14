@@ -2,12 +2,12 @@
     include 'koneksi.php';
 
     $kodePeminjaman = $_GET['kode_peminjaman'];
+    $idBuku= $_GET['id_buku'];
     $namaPeminjam = $_GET['nama_peminjam'];
-    $judulBuku= $_GET['judul_buku'];
     $tglPinjam = $_GET['tgl_pinjam'];
     $tglKembali = $_GET['tgl_kembali'];
 
-    $query = "INSERT INTO peminjaman (kode_peminjaman, peminjam, judul, tanggal_pinjam, tanggal_kembali) VALUES ('$kodePeminjaman', '$namaPeminjam', '$judulBuku', '$tglPinjam', '$tglKembali')";
+    $query = "INSERT INTO peminjaman (kode_peminjaman, peminjam, id_buku, tanggal_pinjam, tanggal_kembali) VALUES ('$kodePeminjaman', '$namaPeminjam', $idBuku, '$tglPinjam', '$tglKembali')";
     $result = mysqli_query($koneksi, $query);
 
     if($result){
