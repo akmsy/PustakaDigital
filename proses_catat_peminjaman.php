@@ -1,11 +1,11 @@
 <?php 
     include 'koneksi.php';
 
-    $kodePeminjaman = $_GET['kode_peminjaman'];
-    $idBuku= $_GET['id_buku'];
-    $namaPeminjam = $_GET['nama_peminjam'];
-    $tglPinjam = $_GET['tgl_pinjam'];
-    $tglKembali = $_GET['tgl_kembali'];
+    $kodePeminjaman = $_POST['kode_peminjaman'];
+    $idBuku= $_POST['id_buku'];
+    $namaPeminjam = $_POST['nama_peminjam'];
+    $tglPinjam = $_POST['tgl_pinjam'];
+    $tglKembali = $_POST['tgl_kembali'];
 
     $query = "INSERT INTO peminjaman (kode_peminjaman, peminjam, id_buku, tanggal_pinjam, tanggal_kembali) VALUES ('$kodePeminjaman', '$namaPeminjam', $idBuku, '$tglPinjam', '$tglKembali')";
     $result = mysqli_query($koneksi, $query);
