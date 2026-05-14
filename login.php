@@ -17,15 +17,15 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Username</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="username">
                 </div>
                 <div class="mb-4">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control">
+                    <input type="password" class="form-control" name="password">
                 </div>
             
                 <div class="d-grid">
-                    <button type="button" class="btn btn-primary">Masuk</button>
+                    <button type="submit" class="btn btn-primary">Masuk</button> 
                 </div>
             </form>
         </div>
