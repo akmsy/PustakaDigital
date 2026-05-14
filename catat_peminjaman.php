@@ -1,5 +1,11 @@
 <?php 
-    include 'koneksi.php'; 
+    session_start();
+    include 'koneksi.php';
+    
+    if (!isset($_SESSION['logged_in'])){
+        header('location: login.php');
+        exit();
+    }
 
     $query = mysqli_query($koneksi, "SELECT id_buku, judul, stok FROM koleksi_buku");
 ?>
