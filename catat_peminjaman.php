@@ -1,7 +1,7 @@
 <?php 
     include 'koneksi.php'; 
 
-    $query = mysqli_query($koneksi, "SELECT judul, stok FROM koleksi_buku");
+    $query = mysqli_query($koneksi, "SELECT id_buku, judul, stok FROM koleksi_buku");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,13 +48,13 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Pilih Buku</label>
-                    <select name="judul_buku" class="form-select">
+                    <select name="id_buku" class="form-select">
                         <option value="">Pilih Buku Tersedia</option>
                         
                         <?php 
                             while ($data = mysqli_fetch_array($query)){ 
                         ?>
-                        <option value="<?= $data['judul']; ?>"><?= $data['judul']; ?> - Stok: <?= $data['stok']; ?></option>
+                        <option value="<?= $data['id_buku']; ?>"><?= $data['judul']; ?> - Stok: <?= $data['stok']; ?></option>
                         <?php } ?>
                     </select>
                 </div>
